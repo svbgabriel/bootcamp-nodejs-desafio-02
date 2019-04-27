@@ -1,0 +1,42 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+  {% if user.provider %}
+    {% if appointmentsAsProvider.length > 0 %}
+        <p>Seus clientes</p>
+        <ul class="appointments">
+          {% for user in appointmentsAsProvider %}
+            <li class="appointment">
+              <div>
+                <img src="/files/{{ user.user.avatar }}" />
+                <strong>{{ user.user.name }}</strong>
+                <p>{{ user.date | date("DD/MM/YYYY [ás] HH:mm:ss") }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+    {% else %}
+    <p>Você não tem clientes no momento</p>
+    {% endif %}
+  {% endif %}
+  {% if appointmentsAsUser.length > 0 %}
+      <p>Seus agendamentos</p>
+      <ul class="appointments">
+        {% for provider in appointmentsAsUser %}
+          <li class="appointment">
+            <div>
+              <img src="/files/{{ provider.provider.avatar }}" />
+              <strong>{{ provider.provider.name }}</strong>
+              <p>{{ provider.date | date("DD/MM/YYYY [ás] HH:mm:ss") }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+  {% else %}
+    <p>Você ainda não fez nenhum agendamento</p>
+  {% endif %}
+
+    <a href="/app/dashboard" class="logout">Voltar</a>
+  </div>
+{% endblock %}

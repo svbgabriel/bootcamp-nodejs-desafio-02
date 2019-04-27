@@ -290,3 +290,55 @@ ul.providers {
 .main-wrapper .content form button:hover {
   background: #634dac;
 }
+
+.main-wrapper .content a.check-appointement {
+  background: #7159c1;
+  text-decoration: none;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 0;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.main-wrapper .content a.check-appointement:hover {
+  background: #634dac;
+}
+
+ul.appointments {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointment div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.appointment img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.appointment strong {
+  margin-left: 15px;
+  color: #444;
+}

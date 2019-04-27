@@ -20,6 +20,35 @@ class AppointmentController {
 
     return res.redirect('/app/dashboard')
   }
+
+  async show (req, res) {
+    const user = req.session.user
+
+    var appointmentsAsProvider
+
+    if (user.provider) {
+      appointmentsAsProvider = await Appointment.findAll({
+        where: { provider_id: user.id },
+        include: [{ model: User, as: 'user', required: true }]
+      })
+    }
+
+    const appointmentsAsUser = await Appointment.findAll({
+      where: { user_id: user.id },
+      include: [{ model: User, as: 'provider', required: true }]
+    })
+
+    const querys = user.provider
+      ? {
+        appointmentsAsProvider,
+        appointmentsAsUser
+      }
+      : {
+        appointmentsAsUser
+      }
+
+    res.render('appointments/show', querys)
+  }
 }
 
 module.exports = new AppointmentController()

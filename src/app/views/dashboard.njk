@@ -3,6 +3,10 @@
 {% block body %}
   <div class="content">
     <strong>Olá, {{ user.name }}</strong>
+
+    <p>Confira os seus agendamentos</p>
+    <a href="/app/appointments/{{ user.id }}/show" class="check-appointement">Agendamentos</a>
+
     <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
 
     <ul class="providers">
